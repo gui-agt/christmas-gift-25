@@ -4,12 +4,18 @@
   padding: 0;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Segoe UI", "Poppins", "Arial", sans-serif;
   background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
   color: #fff;
-  overflow-x: hidden;
-  min-height: 100vh;
 }
 
 /* Snowflakes animation */
@@ -42,6 +48,9 @@ body {
 .snowflake:nth-child(8) { left: 85%; animation-duration: 10s; animation-delay: 2s; font-size: 2.2em; }
 
 @keyframes fall {
+  from {
+    transform: translateY(-10vh) rotate(0deg);
+  }
   to {
     transform: translateY(110vh) rotate(360deg);
   }
@@ -49,30 +58,37 @@ body {
 
 #app {
   position: relative;
-  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .page {
-  display: none;
-  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100vh;
   padding: 2rem 1.5rem;
   text-align: center;
   
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
 
   opacity: 0;
+  visibility: hidden;
   transform: scale(0.9);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s 0.6s;
 }
 
 .page.active {
-  display: flex;
   opacity: 1;
+  visibility: visible;
   transform: scale(1);
+  transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s;
 }
 
 .emoji-decoration {
@@ -225,11 +241,11 @@ button:disabled {
 }
 
 @keyframes rainbow {
-  0% { color: #fff; text-shadow: 0 0 20px #ff6b6b; }
+  0% { color: #fff; text-shadow: 0 0 20px #ff6b9d; }
   25% { color: #fff; text-shadow: 0 0 20px #ffd93d; }
   50% { color: #fff; text-shadow: 0 0 20px #6bcf7f; }
   75% { color: #fff; text-shadow: 0 0 20px #4d96ff; }
-  100% { color: #fff; text-shadow: 0 0 20px #ff6b6b; }
+  100% { color: #fff; text-shadow: 0 0 20px #ff6b9d; }
 }
 
 .big-reveal {
