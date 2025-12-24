@@ -41,23 +41,9 @@ function playSuccessSound() {
 
 // Function to launch confetti
 function launchConfetti() {
-  // Create canvas for confetti
-  const canvas = document.createElement('canvas');
-  canvas.id = 'confetti';
-  canvas.style.position = 'fixed';
-  canvas.style.top = '0';
-  canvas.style.left = '0';
-  canvas.style.width = '100%';
-  canvas.style.height = '100%';
-  canvas.style.pointerEvents = 'none';
-  canvas.style.zIndex = '998';
-  document.body.appendChild(canvas);
-
-  // Load and launch confetti
-  import("https://cdn.skypack.dev/canvas-confetti").then(module => {
-    const confetti = module.default;
-
-    // Multiple confetti bursts
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
+  script.onload = () => {
     const duration = 3000;
     const animationEnd = Date.now() + duration;
 
@@ -71,11 +57,13 @@ function launchConfetti() {
 
       confetti({
         particleCount: 50,
-        spread: 70,
-        origin: { x: Math.random(), y: Math.random() * 0.6 }
+        spread: 100,
+        origin: { x: Math.random(), y: Math.random() * 0.7 },
+        colors: ['#667eea', '#764ba2', '#f093fb', '#64b5f6', '#ffd93d']
       });
     }, 250);
-  }).catch(err => console.log("Confetti failed:", err));
+  };
+  document.head.appendChild(script);
 }
 
 // Function to go to next page
@@ -85,6 +73,12 @@ function goToNextPage() {
 
   setTimeout(() => {
     pages[currentPage].classList.add("active");
+    
+    // Focus on input of new page
+    const nextInput = pages[currentPage].querySelector("input");
+    if (nextInput) {
+      setTimeout(() => nextInput.focus(), 100);
+    }
 
     // Launch confetti on final page
     if (currentPage === pages.length - 1) {
@@ -112,18 +106,21 @@ pages.forEach((page, index) => {
   // Enter key handler
   input.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       checkAnswer();
     }
   });
 
   function checkAnswer() {
     const value = input.value.trim().toLowerCase();
-    const correctAnswer = answers[index].solution;
+    const correctAnswer = answers[index].solution.toLowerCase();
 
     if (value === correctAnswer) {
       // Correct answer
       errorElement.textContent = "";
+      errorElement.style.display = "none";
       input.style.borderColor = "#4ade80";
+      input.style.background = "#e8f5e9";
       input.disabled = true;
       button.disabled = true;
 
@@ -131,36 +128,36 @@ pages.forEach((page, index) => {
 
       setTimeout(() => {
         goToNextPage();
-      }, 500);
+      }, 600);
 
     } else {
       // Wrong answer
       const errorMessages = answers[index].errors;
       errorElement.textContent = errorMessages[errorCount % errorMessages.length];
+      errorElement.style.display = "block";
       errorCount++;
 
       // Shake animation
-      input.style.animation = "none";
+      input.classList.remove("shake");
       setTimeout(() => {
-        input.style.animation = "shake 0.5s";
+        input.classList.add("shake");
       }, 10);
 
-      input.style.borderColor = "#ff6b9d";
+      input.style.borderColor = "#ef5350";
 
-      // Clear input
-      input.value = "";
-      input.focus();
+      // Clear input after a moment
+      setTimeout(() => {
+        input.value = "";
+        input.focus();
+      }, 500);
     }
   }
 });
 
-// Add shake animation
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+// Initialize: focus on first input
+window.addEventListener('load', () => {
+  const firstInput = pages[0].querySelector('input');
+  if (firstInput) {
+    firstInput.focus();
   }
-`;
-document.head.appendChild(style);
+});
