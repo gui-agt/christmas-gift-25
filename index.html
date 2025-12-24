@@ -3,74 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Christmas Gift 🎄</title>
+  <title>🎄 Christmas Gift Hunt 🎁</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+  </div>
+
   <main id="app">
 
     <!-- PAGE 1 -->
-    <section class="page active">
-      <h1>Hello dear Ekinsu 🎄</h1>
-      <p>
-        Welcome to your christmas gift page,<br>
-        let's make it easy and little bit fun!><br>
-        (and with love)<br>
-        <strong>Hazır mısın?</strong>
+    <section class="page active" data-page="0">
+      <div class="emoji-decoration">🎅</div>
+      <h1>🎄 Merhaba Ekinsu! 🎄</h1>
+      <p class="intro">
+        Welcome to your magical Christmas gift adventure!<br>
+        Answer 3 fun questions to discover your surprise...<br>
+        <strong>✨ Hazır mısın? ✨</strong>
       </p>
 
-      <p class="question">
-        Here is one clue:<br>
-        Do you remember who we have seen in a symphony orchestra?
-      </p>
+      <div class="question-box">
+        <p class="question">
+          🎻 <strong>Question 1:</strong><br>
+          Do you remember who we saw performing with a symphony orchestra?
+        </p>
 
-      <input type="text" placeholder="Your answer..." />
-      <button>Validate</button>
-      <p class="error"></p>
+        <input type="text" placeholder="Type the artist's name..." />
+        <button>🎁 Check Answer</button>
+        <p class="error"></p>
+      </div>
     </section>
 
     <!-- PAGE 2 -->
-    <section class="page">
-      <h1>Alright, alright 😏</h1>
-      <p>You did good. You know where we are heading already?</p>
-
-      <p class="question">
-        Okay, what is the lastest artist we've seen in concert together?
+    <section class="page" data-page="1">
+      <div class="emoji-decoration">🎶</div>
+      <h1>🌟 Harika! You're doing great! 🌟</h1>
+      <p class="intro">
+        One step closer to your gift...<br>
+        Can you guess where this is going? 😏
       </p>
 
-      <input type="text" placeholder="Your answer..." />
-      <button>Validate</button>
-      <p class="error"></p>
+      <div class="question-box">
+        <p class="question">
+          🎤 <strong>Question 2:</strong><br>
+          What's the name of the latest artist we saw in concert together?
+        </p>
+
+        <input type="text" placeholder="Type the artist's name..." />
+        <button>🎁 Check Answer</button>
+        <p class="error"></p>
+      </div>
     </section>
 
     <!-- PAGE 3 -->
-    <section class="page">
-      <h1>Well well well 😎</h1>
-      <p>I'm sure you know where this is going...</p>
-
-      <p class="question">
-        Tell me, who would you love to see this summer?
+    <section class="page" data-page="2">
+      <div class="emoji-decoration">🎸</div>
+      <h1>🔥 Almost there! 🔥</h1>
+      <p class="intro">
+        Last question before the BIG reveal...<br>
+        I bet you already know what's coming! 😎
       </p>
 
-      <input type="text" placeholder="Your answer..." />
-      <button>Validate</button>
-      <p class="error"></p>
-      <canvas id="confetti"></canvas>
+      <div class="question-box">
+        <p class="question">
+          ☀️ <strong>Final Question:</strong><br>
+          Which artist would you LOVE to see this summer?
+        </p>
+
+        <input type="text" placeholder="Type the artist's name..." />
+        <button>🎁 Reveal My Gift!</button>
+        <p class="error"></p>
+      </div>
     </section>
 
     <!-- FINAL PAGE -->
-    <section class="page final">
-      <h1>🎁 Surprise 🎁</h1>
-      <p>MOBY this summer 💙</p>
-      <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="Celebration GIF" />
+    <section class="page final" data-page="3">
+      <div class="gift-box">
+        <div class="gift-lid">🎀</div>
+        <div class="gift-body">🎁</div>
+      </div>
+      
+      <h1 class="surprise-title">🎉 SURPRISE! 🎉</h1>
+      <p class="big-reveal">
+        We're going to see<br>
+        <span class="artist-name">✨ MOBY ✨</span><br>
+        this summer! 🌞🎶
+      </p>
+      
+      <div class="concert-emoji">
+        <span>🎸</span>
+        <span>🎤</span>
+        <span>🎹</span>
+        <span>🎧</span>
+        <span>💙</span>
+      </div>
+      
+      <p class="love-message">
+        Merry Christmas! 🎄<br>
+        Can't wait to dance with you! 💃🕺
+      </p>
     </section>
 
   </main>
 
-  <script src="script.js"></script>
   <audio id="success-sound" preload="auto">
-  <source src="success.mp3" type="audio/mpeg">
-</audio>
+    <source src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
 </body>
 </html>
