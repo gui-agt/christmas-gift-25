@@ -5,7 +5,8 @@
 
 body {
   margin: 0;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: linear-gradient(180deg, #b11226, #2e7d32);
+  color: #fff;
 }
 
 #app {
@@ -14,22 +15,31 @@ body {
 
 .page {
   display: none;
+  min-height: 100svh;
   height: 100vh;
   padding: 2rem;
   text-align: center;
+  padding: 1.5rem;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .page.active {
   display: flex;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  margin-bottom: 1rem;
 }
 
 .question {
@@ -48,13 +58,12 @@ input {
 
 button {
   margin-top: 1rem;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 20px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  background: gold;
+  color: #b11226;
+  font-weight: bold;
   border: none;
-  cursor: pointer;
-  background: #6a11cb;
-  color: white;
   transition: transform 0.2s;
 }
 

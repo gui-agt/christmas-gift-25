@@ -1,3 +1,19 @@
+const successSound = document.getElementById("success-sound");
+successSound.currentTime = 0;
+successSound.play();
+
+function launchConfetti() {
+  import("https://cdn.skypack.dev/canvas-confetti").then(confetti => {
+    confetti.default({
+      particleCount: 150,
+      spread: 80,
+      origin: { y: 0.6 }
+    });
+  });
+}
+launchConfetti();
+
+
 const pages = document.querySelectorAll(".page");
 let currentPage = 0;
 
