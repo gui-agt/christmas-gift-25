@@ -1,0 +1,37 @@
+const pages = document.querySelectorAll(".page");
+let currentPage = 0;
+
+const answers = [
+  {
+    solution: "gazapizm",
+    error: "Aïe! failed.. try again. You can do it I'm sure!"
+  },
+  {
+    solution: "kalben",
+    error: "Ouchhhh, is your memory alright? Or is it mine? Hmmm... no, no, think again!"
+  },
+  {
+    solution: "moby",
+    error: "Hm, let's see if we can exchange tickets! 😂"
+  }
+];
+
+pages.forEach((page, index) => {
+  const button = page.querySelector("button");
+  const input = page.querySelector("input");
+  const error = page.querySelector(".error");
+
+  if (!button) return;
+
+  button.addEventListener("click", () => {
+    const value = input.value.trim().toLowerCase();
+
+    if (value === answers[index].solution) {
+      pages[currentPage].classList.remove("active");
+      currentPage++;
+      pages[currentPage].classList.add("active");
+    } else {
+      error.textContent = answers[index].error;
+    }
+  });
+});
