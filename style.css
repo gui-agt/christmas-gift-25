@@ -91,14 +91,14 @@ body {
   width: 100%;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  padding: 1.5rem 1rem;
+  padding: 2rem 1.5rem;
   text-align: center;
   
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 
   opacity: 0;
   visibility: hidden;
@@ -233,7 +233,7 @@ button:disabled {
 
 .gift-box {
   position: relative;
-  margin: 1rem 0;
+  margin: 0;
   animation: wiggle 1.5s ease-in-out infinite;
 }
 
@@ -259,7 +259,7 @@ button:disabled {
 .surprise-title {
   font-size: clamp(2.5rem, 8vw, 4rem);
   animation: rainbow 3s linear infinite;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 @keyframes rainbow {
@@ -273,14 +273,14 @@ button:disabled {
 .big-reveal {
   font-size: 1.5rem;
   line-height: 2;
-  margin: 2rem 0;
+  margin: 0;
 }
 
 .artist-name {
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 700;
   display: block;
-  margin: 1rem 0;
+  margin: 0;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.9);
   animation: pulse 1.5s ease-in-out infinite;
 }
@@ -293,7 +293,7 @@ button:disabled {
 .concert-emoji {
   font-size: 3rem;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   margin: 2rem 0;
 }
