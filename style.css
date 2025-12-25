@@ -366,8 +366,8 @@ h1 {
 }
 
 .moby-gif img {
-  max-width: 300px;
-  width: 90%;
+  max-width: 200px;
+  width: 60%;
   height: auto;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
