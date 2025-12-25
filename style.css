@@ -331,3 +331,114 @@ button:disabled {
 .shake {
   animation: shake 0.5s;
 }
+
+/* Correctifs V2 */
+
+/* Ajustements pour mobile - REMPLACEZ les sections h1, .intro, .question */
+h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  line-height: 1.2;
+}
+
+.intro {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+.question {
+  margin-bottom: 1.2rem;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.emoji-decoration {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  animation: bounce 2s infinite;
+}
+
+/* Style pour le GIF de Moby */
+.moby-gif {
+  margin: 1rem 0;
+  animation: fadeInScale 1s ease-out;
+}
+
+.moby-gif img {
+  max-width: 300px;
+  width: 90%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Ajustements espacements pour mobile */
+.page {
+  gap: clamp(1rem, 3vw, 1.5rem);
+  padding: 1.5rem 1rem;
+}
+
+.question-box {
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.9rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+}
+
+button {
+  padding: 0.9rem 1.8rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+}
+
+/* Responsive final page */
+.artist-name {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+}
+
+.big-reveal {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  margin: 1rem 0;
+}
+
+.concert-emoji {
+  font-size: clamp(2rem, 6vw, 3rem);
+  gap: clamp(0.8rem, 2vw, 1.5rem);
+}
+
+.love-message {
+  font-size: clamp(1rem, 2.8vw, 1.3rem);
+}
+
+@media (max-height: 700px) {
+  .page {
+    gap: 0.8rem;
+  }
+  
+  .emoji-decoration {
+    font-size: 2.5rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .moby-gif img {
+    max-width: 200px;
+  }
+}

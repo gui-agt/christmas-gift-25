@@ -32,7 +32,7 @@ const answers = [
     errors: [
       "🎅 Ouch! Is your memory playing tricks? Think harder! 😅",
       "🌟 Not the right one... Remember our last concert? 🎤",
-      "✨ Close but no cigar! You can do better! 💫"
+      "✨ Aïe... is my memory actually wrong? No, no... think again! 💫"
     ]
   },
   {
@@ -40,7 +40,7 @@ const answers = [
     errors: [
       "🎁 Hmm... Who do you REALLY want to see this summer? 😏",
       "🎉 Think about who makes the best summer vibes! ☀️",
-      "🎊 Last chance! Who's your dream concert? 🎶"
+      "🎊 Last chance! think about a bold guy with glasses 🎶"
     ]
   }
 ];
@@ -85,27 +85,88 @@ function launchConfetti() {
   document.head.appendChild(script);
 }
 
-// Function to go to next page
+// Function to play Moby music
+function playMobyMusic() {
+  const mobyMusic = document.getElementById("moby-music");
+  if (mobyMusic) {
+    mobyMusic.volume = 0.5; // Volume à 50%
+    mobyMusic.play().catch(err => {
+      console.log("Music play failed (user interaction required):", err);
+      // Fallback: créer un bouton si l'autoplay échoue
+      createMusicButton();
+    });
+  }
+}
+
+// Créer un bouton de lecture si l'autoplay est bloqué
+function createMusicButton() {
+  const button = document.createElement('button');
+  button.textContent = '🎵 Play Music';
+  button.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+  `;
+  
+  button.onclick = () => {
+    const mobyMusic = document.getElementById("moby-music");
+    if (mobyMusic) {
+      mobyMusic.play();
+      button.remove();
+    }
+  };
+  
+  document.body.appendChild(button);
+}
+
+// // Function to go to next page
+// function goToNextPage() {
+//   pages[currentPage].classList.remove("active");
+//   currentPage++;
+
+//   setTimeout(() => {
+//     pages[currentPage].classList.add("active");
+    
+//     // Focus on input of new page
+//     const nextInput = pages[currentPage].querySelector("input");
+//     if (nextInput) {
+//       setTimeout(() => nextInput.focus(), 100);
+//     }
+
+//     // Launch confetti on final page
+//     if (currentPage === pages.length - 1) {
+//       playSuccessSound();
+//       launchConfetti();
+//     }
+//   }, 300);
+// }
+
 function goToNextPage() {
   pages[currentPage].classList.remove("active");
   currentPage++;
 
   setTimeout(() => {
     pages[currentPage].classList.add("active");
-    
-    // Focus on input of new page
-    const nextInput = pages[currentPage].querySelector("input");
-    if (nextInput) {
-      setTimeout(() => nextInput.focus(), 100);
-    }
 
-    // Launch confetti on final page
+    // Launch confetti and music on final page
     if (currentPage === pages.length - 1) {
       playSuccessSound();
       launchConfetti();
+      setTimeout(playMobyMusic, 1000); // Démarre la musique après 1 seconde
     }
   }, 300);
 }
+
 
 // Setup event listeners for each page
 pages.forEach((page, index) => {
