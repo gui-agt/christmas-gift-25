@@ -1,3 +1,22 @@
+// Fix pour le bug 100vh sur mobile
+function setVhVariable() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Initialisation
+setVhVariable();
+
+// Recalculer uniquement lors du redimensionnement de la largeur
+// (pas lors du scroll qui cache/affiche la barre d'adresse)
+let lastWidth = window.innerWidth;
+window.addEventListener('resize', () => {
+  if (window.innerWidth !== lastWidth) {
+    setVhVariable();
+    lastWidth = window.innerWidth;
+  }
+});
+
 // Configuration
 const answers = [
   {
